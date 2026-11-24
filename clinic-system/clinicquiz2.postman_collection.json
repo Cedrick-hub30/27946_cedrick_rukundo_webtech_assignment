@@ -1,0 +1,1559 @@
+{
+  "info": {
+    "_postman_id": "317ffaeb-9020-4d98-ade4-7cf2b823044c",
+    "name": "QUIZ 2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55368463",
+    "_collection_link": "https://go.postman.co/collection/55368463-317ffaeb-9020-4d98-ade4-7cf2b823044c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "0 - Seed",
+      "item": [
+        {
+          "name": "Seed 1 - Office 104",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Pediatrics Room\",\r\n  \"officeNumber\": 104\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/offices/save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "offices",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Seed 2 - Patient ssNumber",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"firstName\": \"Grace\", \"lastName\": \"Uwase\", \"dateOfBirth\": \"1992-08-20\", \"ssNumber\": \"SS-1001\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/patients/update/b7dee1ea-c1c1-49c9-bc3d-35f787916f64",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "patients",
+                "update",
+                "b7dee1ea-c1c1-49c9-bc3d-35f787916f64"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Seed 3 - Appointment 20 Oct",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"appointmentDate\": \"2026-10-20\", \"reason\": \"Chest pain\", \"status\": \"SCHEDULED\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/update/db5592d2-3cde-4b7a-82d3-9f448608e8df",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "update",
+                "db5592d2-3cde-4b7a-82d3-9f448608e8df"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Seed 4 - Appointment 22 Oct",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"appointmentDate\": \"2026-10-22\", \"reason\": \"Skin check\", \"status\": \"SCHEDULED\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/update/8bd8ab41-8cd9-4c9a-8e2c-9a3e07b63b96",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "update",
+                "8bd8ab41-8cd9-4c9a-8e2c-9a3e07b63b96"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Seed 5 - Appointment 5 Nov",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"appointmentDate\": \"2026-11-05\", \"reason\": \"Follow-up\", \"status\": \"CONFIRMED\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/update/7ac70434-4eb1-44ba-8c18-b7a035069922",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "update",
+                "7ac70434-4eb1-44ba-8c18-b7a035069922"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "A - Doctors and offices",
+      "item": [
+        {
+          "name": "A1 (success: give Diane Pediatrics)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/c4b8b565-5f1e-4d4b-bb60-f1b84c883482/specializations/85c2dd94-1ea2-4e17-adc2-852707a4491f",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "c4b8b565-5f1e-4d4b-bb60-f1b84c883482",
+                "specializations",
+                "85c2dd94-1ea2-4e17-adc2-852707a4491f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A1 - 409 (John already has Cardiology)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/2b21db57-b1ce-4eb3-8299-d8a0c350cdd9/specializations/d1f61e96-bc8d-408c-92fb-b76904704417",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "2b21db57-b1ce-4eb3-8299-d8a0c350cdd9",
+                "specializations",
+                "d1f61e96-bc8d-408c-92fb-b76904704417"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A1 - 404 (fake doctor)",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/00000000-0000-0000-0000-000000000000/specializations/d1f61e96-bc8d-408c-92fb-b76904704417",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "00000000-0000-0000-0000-000000000000",
+                "specializations",
+                "d1f61e96-bc8d-408c-92fb-b76904704417"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 (success: take Pediatrics back from Diane)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/c4b8b565-5f1e-4d4b-bb60-f1b84c883482/specializations/85c2dd94-1ea2-4e17-adc2-852707a4491f",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "c4b8b565-5f1e-4d4b-bb60-f1b84c883482",
+                "specializations",
+                "85c2dd94-1ea2-4e17-adc2-852707a4491f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - 409 (send the same request again)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/c4b8b565-5f1e-4d4b-bb60-f1b84c883482/specializations/85c2dd94-1ea2-4e17-adc2-852707a4491f",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "c4b8b565-5f1e-4d4b-bb60-f1b84c883482",
+                "specializations",
+                "85c2dd94-1ea2-4e17-adc2-852707a4491f"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A2 - 404 (fake specialization)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/c4b8b565-5f1e-4d4b-bb60-f1b84c883482/specializations/00000000-0000-0000-0000-000000000000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "c4b8b565-5f1e-4d4b-bb60-f1b84c883482",
+                "specializations",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A3: free offices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/offices/free",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "offices",
+                "free"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A4 (success: move Doctor Eric from 103 to 104)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/57c3b7cd-aae5-42b2-9b22-098d8ea11516/office?officeNumber=104",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "57c3b7cd-aae5-42b2-9b22-098d8ea11516",
+                "office"
+              ],
+              "query": [
+                {
+                  "key": "officeNumber",
+                  "value": "104"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A4 - 409 (John to 102, Diane’s office)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/2b21db57-b1ce-4eb3-8299-d8a0c350cdd9/office?officeNumber=102",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "2b21db57-b1ce-4eb3-8299-d8a0c350cdd9",
+                "office"
+              ],
+              "query": [
+                {
+                  "key": "officeNumber",
+                  "value": "102"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A4 - 404 (office 999 doesn’t exist)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/2b21db57-b1ce-4eb3-8299-d8a0c350cdd9/office?officeNumber=999",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "2b21db57-b1ce-4eb3-8299-d8a0c350cdd9",
+                "office"
+              ],
+              "query": [
+                {
+                  "key": "officeNumber",
+                  "value": "999"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "A4 - back (put Eric back in 103, so the seed data matches the quiz again)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/57c3b7cd-aae5-42b2-9b22-098d8ea11516/office?officeNumber=103",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "57c3b7cd-aae5-42b2-9b22-098d8ea11516",
+                "office"
+              ],
+              "query": [
+                {
+                  "key": "officeNumber",
+                  "value": "103"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "B - Appointment rules",
+      "item": [
+        {
+          "name": "B1 (success: the status in the body is ignored)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"appointmentDate\": \"2026-10-28\", \"reason\": \"Skin allergy\", \"status\": \"COMPLETED\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/save?doctorId=c4b8b565-5f1e-4d4b-bb60-f1b84c883482&patientId=c60e65e5-a7a0-4d33-8336-218f70259fef",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "doctorId",
+                  "value": "c4b8b565-5f1e-4d4b-bb60-f1b84c883482"
+                },
+                {
+                  "key": "patientId",
+                  "value": "c60e65e5-a7a0-4d33-8336-218f70259fef"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B1 - 400 (a date in the past)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"appointmentDate\": \"2026-10-01\", \"reason\": \"Too late\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/save?doctorId=c4b8b565-5f1e-4d4b-bb60-f1b84c883482&patientId=c60e65e5-a7a0-4d33-8336-218f70259fef",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "doctorId",
+                  "value": "c4b8b565-5f1e-4d4b-bb60-f1b84c883482"
+                },
+                {
+                  "key": "patientId",
+                  "value": "c60e65e5-a7a0-4d33-8336-218f70259fef"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B2 (success: SCHEDULED → CONFIRMED, Grace’s 20 Oct appointment)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/db5592d2-3cde-4b7a-82d3-9f448608e8df/status?status=CONFIRMED",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "db5592d2-3cde-4b7a-82d3-9f448608e8df",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "CONFIRMED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B2 - 400 (a final status: COMPLETED → SCHEDULED, Jean’s ECG test)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/91098390-9cda-40c3-8dd8-3166cfa9081c/status?status=SCHEDULED",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "91098390-9cda-40c3-8dd8-3166cfa9081c",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "SCHEDULED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B2 - 400 backwards (CONFIRMED → SCHEDULED is not an allowed arrow)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/db5592d2-3cde-4b7a-82d3-9f448608e8df/status?status=SCHEDULED",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "db5592d2-3cde-4b7a-82d3-9f448608e8df",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "SCHEDULED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B2 - 404 (fake appointment)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/00000000-0000-0000-0000-000000000000/status?status=CONFIRMED",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "00000000-0000-0000-0000-000000000000",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "CONFIRMED"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B2 - PUT no longer changes status",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"appointmentDate\": \"2026-10-20\", \"reason\": \"Chest pain\", \"status\": \"CANCELLED\" }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/update/db5592d2-3cde-4b7a-82d3-9f448608e8df",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "update",
+                "db5592d2-3cde-4b7a-82d3-9f448608e8df"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B3 (success: move Grace’s 22 Oct appointment with Diane to 30 Oct)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/8bd8ab41-8cd9-4c9a-8e2c-9a3e07b63b96/reschedule?newDate=2026-10-30",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "8bd8ab41-8cd9-4c9a-8e2c-9a3e07b63b96",
+                "reschedule"
+              ],
+              "query": [
+                {
+                  "key": "newDate",
+                  "value": "2026-10-30"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B3 - 409 (move Grace’s 5 Nov appointment to 20 Oct: John already has Grace’s CONFIRMED appointment that day)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/7ac70434-4eb1-44ba-8c18-b7a035069922/reschedule?newDate=2026-10-20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "7ac70434-4eb1-44ba-8c18-b7a035069922",
+                "reschedule"
+              ],
+              "query": [
+                {
+                  "key": "newDate",
+                  "value": "2026-10-20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B3 - 400 past",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/7ac70434-4eb1-44ba-8c18-b7a035069922/reschedule?newDate=2026-10-01",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "7ac70434-4eb1-44ba-8c18-b7a035069922",
+                "reschedule"
+              ],
+              "query": [
+                {
+                  "key": "newDate",
+                  "value": "2026-10-01"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B3 - 400 completed (Jean’s ECG test is COMPLETED)",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/91098390-9cda-40c3-8dd8-3166cfa9081c/reschedule?newDate=2026-11-20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "91098390-9cda-40c3-8dd8-3166cfa9081c",
+                "reschedule"
+              ],
+              "query": [
+                {
+                  "key": "newDate",
+                  "value": "2026-11-20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "B3 - 404",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/00000000-0000-0000-0000-000000000000/reschedule?newDate=2026-11-20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "00000000-0000-0000-0000-000000000000",
+                "reschedule"
+              ],
+              "query": [
+                {
+                  "key": "newDate",
+                  "value": "2026-11-20"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "C - Prescriptions",
+      "item": [
+        {
+          "name": "C1 (Amoxicillin for Jean’s ECG test)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"medicineName\": \"Amoxicillin\", \"dosage\": \"1 tablet, 3 times a day\", \"durationDays\": 7 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/save?appointmentId=91098390-9cda-40c3-8dd8-3166cfa9081c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "appointmentId",
+                  "value": "91098390-9cda-40c3-8dd8-3166cfa9081c"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C1 - second (Paracetamol, the same appointment)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"medicineName\": \"Paracetamol\", \"dosage\": \"2 tablets when needed\", \"durationDays\": 5 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/save?appointmentId=91098390-9cda-40c3-8dd8-3166cfa9081c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "appointmentId",
+                  "value": "91098390-9cda-40c3-8dd8-3166cfa9081c"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C1 - third (Amoxicillin for Paul’s Mole check)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"medicineName\": \"Amoxicillin\", \"dosage\": \"1 tablet, 2 times a day\", \"durationDays\": 10 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/save?appointmentId=c6cda110-672a-4028-8ef9-c67a72f31064",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "appointmentId",
+                  "value": "c6cda110-672a-4028-8ef9-c67a72f31064"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C1 - 400 (Grace’s 20 Oct appointment is CONFIRMED, not COMPLETED)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"medicineName\": \"Amoxicillin\", \"dosage\": \"1 tablet, 2 times a day\", \"durationDays\": 10 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/save?appointmentId=db5592d2-3cde-4b7a-82d3-9f448608e8df",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "appointmentId",
+                  "value": "db5592d2-3cde-4b7a-82d3-9f448608e8df"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C1 - 404",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"medicineName\": \"Amoxicillin\", \"dosage\": \"1 tablet, 2 times a day\", \"durationDays\": 10 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/save?appointmentId=00000000-0000-0000-0000-000000000000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "appointmentId",
+                  "value": "00000000-0000-0000-0000-000000000000"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C2 (Jean’s ECG test)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/appointment/91098390-9cda-40c3-8dd8-3166cfa9081c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "appointment",
+                "91098390-9cda-40c3-8dd8-3166cfa9081c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C2 - empty (Grace’s 20 Oct appointment has none)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/appointment/db5592d2-3cde-4b7a-82d3-9f448608e8df",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "appointment",
+                "db5592d2-3cde-4b7a-82d3-9f448608e8df"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C2 - 404",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/appointment/00000000-0000-0000-0000-000000000000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "appointment",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C3 (Jean, SS-1003)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/patient/SS-1003",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "patient",
+                "SS-1003"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C3 - empty (Grace, SS-1001, has no COMPLETED appointment yet)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/patient/SS-1001",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "patient",
+                "SS-1001"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C4 - update",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"medicineName\": \"Paracetamol\", \"dosage\": \"1 tablet, 3 times a day\", \"durationDays\": 3 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/update/9184de5b-81dd-48de-808f-96c50f15d5bb",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "update",
+                "9184de5b-81dd-48de-808f-96c50f15d5bb"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C4 - update 404",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"medicineName\": \"Paracetamol\", \"dosage\": \"1 tablet, 3 times a day\", \"durationDays\": 3 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/update/00000000-0000-0000-0000-000000000000",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "update",
+                "00000000-0000-0000-0000-000000000000"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C4 - protect (try to delete Jean’s ECG appointment, which has prescriptions)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/appointments/delete/91098390-9cda-40c3-8dd8-3166cfa9081c",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "appointments",
+                "delete",
+                "91098390-9cda-40c3-8dd8-3166cfa9081c"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "http://localhost:8082/api/appointments/delete/91098390-9cda-40c3-8dd8-3166cfa9081c",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"medicineName\": \"Ibuprofen\", \"dosage\": \"1 tablet after meals\", \"durationDays\": 3 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/save?appointmentId=c6cda110-672a-4028-8ef9-c67a72f31064",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "save"
+              ],
+              "query": [
+                {
+                  "key": "appointmentId",
+                  "value": "c6cda110-672a-4028-8ef9-c67a72f31064"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get that prescription to delete",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Trying to delete it with it's id",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/delete/6465456b-9d07-4b27-8106-bede90a5efaa",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "delete",
+                "6465456b-9d07-4b27-8106-bede90a5efaa"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "C4 - delete 404 (send the same DELETE again)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/prescriptions/delete/6465456b-9d07-4b27-8106-bede90a5efaa",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "prescriptions",
+                "delete",
+                "6465456b-9d07-4b27-8106-bede90a5efaa"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "D - Agenda and reports",
+      "item": [
+        {
+          "name": "D1 (John on 20 October)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/2b21db57-b1ce-4eb3-8299-d8a0c350cdd9/agenda?date=2026-10-20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "2b21db57-b1ce-4eb3-8299-d8a0c350cdd9",
+                "agenda"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2026-10-20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D1 - 404",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/00000000-0000-0000-0000-000000000000/agenda?date=2026-10-20",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "00000000-0000-0000-0000-000000000000",
+                "agenda"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2026-10-20"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D2 (Grace, SS-1001)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/patients/SS-1001/upcoming",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "patients",
+                "SS-1001",
+                "upcoming"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D2 - 404",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/patients/SS-9999/upcoming",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "patients",
+                "SS-9999",
+                "upcoming"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D3 - search doctors by name",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/search?name=gis",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "gis"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D3 - several (“ma” appears in two last names)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/search?name=MA",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "MA"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D3 - empty",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/search?name=xyz",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "xyz"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "D4 -dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/dashboard/summary",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "dashboard",
+                "summary"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Bonus",
+      "item": [
+        {
+          "name": "Bonus 1 - Top medicines",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bonus 2 - Workload (October)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": ""
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Bonus 2 - Workload (Oct–Nov)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/doctors/workload?start=2026-10-01&end=2026-11-30",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "doctors",
+                "workload"
+              ],
+              "query": [
+                {
+                  "key": "start",
+                  "value": "2026-10-01"
+                },
+                {
+                  "key": "end",
+                  "value": "2026-11-30"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

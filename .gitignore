@@ -1,0 +1,17 @@
+
+# React dependencies
+**/node_modules/
+**/dist/
+
+# Spring Boot generated files
+**/target/
+
+# Database configuration and secrets
+**/src/main/resources/application.properties
+**/src/main/resources/application-*.properties
+**/.env
+**/.env.*
+
+# Editor settings
+**/.idea/
+**/.vscode/
